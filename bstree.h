@@ -95,9 +95,9 @@ private:
 	template <typename U>
 	void preorder (node* p, U f, int depth) const {
 		if (p) {
+			f(p->data, depth);
 			preorder(p->left, f, depth + 1);
 			preorder(p->right, f, depth + 1);
-			f(p->data, depth);
 		}
 	}
 
