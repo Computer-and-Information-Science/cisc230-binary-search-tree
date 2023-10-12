@@ -82,7 +82,11 @@ private:
 	// at p, then performs an inorder traversal on the right subtree.
 	template <typename U>
 	void inorder (node* p, U f) const {
-		// TODO: Complete this function.
+		if (p) {
+			inorder(p->left, f);
+			f(p->data);
+			inorder(p->right, f);
+		}
 	}
 
 	// A preorder traversal for a subtree rooted at node p. Calls f for the
@@ -90,7 +94,11 @@ private:
 	// traversal on the left and right subtrees passing the depth plus 1.
 	template <typename U>
 	void preorder (node* p, U f, int depth) const {
-		// TODO: Complete this function.
+		if (p) {
+			preorder(p->left, f, depth + 1);
+			preorder(p->right, f, depth + 1);
+			f(p->data, depth);
+		}
 	}
 
 public:
